@@ -1,7 +1,6 @@
 import numpy as np
 import os
 import matplotlib.pyplot as plt
-from numpy.core.fromnumeric import size
 import skimage.io
 from mpl_toolkits.mplot3d import Axes3D
 np.set_printoptions(suppress=True)
@@ -83,10 +82,8 @@ def create_dynamic_transforms(config, tracks, flow, point_imgs, raw_imgs, calibr
         tracks.add_new_attribute('global_colors')
         tracks.add_new_attribute('global_3D_bbox')
         tracks.add_new_attribute('global_points_unprocessed')
-    
-    # print(tracks.timesteps)
 
-    for step in range(150):
+    for step in range(tracks.timesteps-1):
         for id in tracks.get_active_tracks(step):
             if id in tracks.get_active_tracks(step+1):
                 mask_t0 = tracks.get_mask(step, id, postprocess=True)

@@ -177,18 +177,15 @@ def import_detections(config, sequence):
 
 def import_detections_RRC(detections_import_path):
     detections = []
-    
 
     for t in range(len(os.listdir(detections_import_path))):
         file = detections_import_path + str(t).zfill(6) + '.txt'
-        # file = detections_import_path + '0002' + '.txt'
-
         try:
             with open(file) as f:
                 lines = f.readlines()
         except:
             detections.append([])
-            print('WARNING===: could not load ' + file)
+            print('WARNING: could not load ' + file)
             continue
 
         curr_detections = []

@@ -1,5 +1,4 @@
-# from scipy.misc import imread
-from imageio import imread
+from scipy.misc import imread
 from pycocotools.mask import encode
 import numpy as np
 import json

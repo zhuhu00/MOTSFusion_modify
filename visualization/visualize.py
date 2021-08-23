@@ -1,4 +1,3 @@
-from numpy.core.fromnumeric import size
 from visualization.vtkVisualization import VTKPointCloud
 from utils.visualization_utils import warp_points, generate_colors, draw_bbox, initVisualization, get_bbox_points_dense
 from utils.reconstruction_utils import get_center_point
@@ -65,19 +64,22 @@ def visualize_sequence_3D(config, tracks, point_imgs, raw_imgs, ids=None):
     global_scene_visualization = {'points': [],
                                   'colors': []}
     colors = generate_colors()
-    # for step in range(len(raw_imgs)):
-    for step in range(150):
-        # print(len(raw_imgs))
-        # if step % 2 == 0 or step == 0:
-        #     point_img = rescale(point_imgs[step], 1 / 4, anti_aliasing=False)
-        #     raw_img = rescale(raw_imgs[step], 1 / 4, anti_aliasing=True, preserve_range=True).astype(np.float)
-        #     shape = (point_img.shape[0] * point_img.shape[1], point_img.shape[2])
-        #     # print(shape)
-        #     height_mask = np.where(point_img.reshape(shape)[:, 1] >= -2.5)
-        # #     print(size(point_img))
-        # #     # height_mask = point_img
-        #     global_scene_visualization['points'].extend(point_img.reshape(shape)[height_mask])
-        #     global_scene_visualization['colors'].extend(raw_img.reshape(shape)[height_mask])
+    for step in range(len(raw_imgs)):
+        if step % 2 == 0 or step == 0:
+            point_img = rescale(point_imgs[step], 1 / 4, anti_aliasing=False)
+            raw_img = rescale(raw_imgs[step], 1 / 4, anti_aliasing=True, preserve_range=True).astype(np.float)
+            shape = (point_img.shape[0] * point_img.shape[1], point_img.shape[2])
+
+            print(str(shape)+"==="+str(point_img)+"==="+str(point_img.shape))
+            print("================")
+
+            # height_mask = np.where(point_img.reshape(shape)[:, 1] >= -2.5)
+
+            
+            # global_scene_visualization['points'].extend(point_img.reshape(shape)[height_mask])
+            global_scene_visualization['points'].extend(point_img.reshape(shape))
+            # global_scene_visualization['colors'].extend(raw_img.reshape(shape)[height_mask])
+            global_scene_visualization['colors'].extend(raw_img.reshape(shape))
 
         for ref_id in tracks.get_active_tracks(step):
             if ids is not None:

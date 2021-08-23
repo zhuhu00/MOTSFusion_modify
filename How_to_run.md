@@ -7,9 +7,15 @@ ps: 本仓库对运行所需要的东西做了一定的修改.更好的能够运
 - python==3.6 
 
 ### Sub-modules:
-- netdef_models: https://github.com/lmb-freiburg/netdef_models
-- lmbspecialops: https://github.com/lmb-freiburg/lmbspecialops
+- netdef_models: https://github.com/lmb-freiburg/netdef_models (已有)
+- lmbspecialops: https://github.com/lmb-freiburg/lmbspecialops (需安装)
+  
+  | 命令:
 - netdef_slim: https://github.com/lmb-freiburg/netdef_slim
+
+这几个模块安装在`external/netdef_models/文件夹下`
+
+- Download our [pretrained segmentation network](https://drive.google.com/open?id=1Jj3VpAo7WJ-8Tvr7M3XLTA2WrUivvvNA) and extract it into './external/BB2SegNet',直接文件夹`summaries`复制到该文件夹下
 
 ### 文件夹tree:
 

@@ -43,7 +43,6 @@ def apply_mask(image, mask, color, alpha=0.5):
 
 def visualize_sequences(sequences, result_folder, img_folder, output_folder, seqmap_filename, draw_boxes=False,
                      create_video=True):
-    print(seqmap_filename+"==========")
     seqmap, max_frames = load_seqmap(seqmap_filename)
     for seq_id in sequences:
         os.makedirs(output_folder + "/" + seq_id, exist_ok=True)

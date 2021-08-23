@@ -66,7 +66,6 @@ if __name__ == '__main__':
         # create dynamic transforms
         print('  Create dynamic transforms...')
         tic = time.time()
-        # TODO 这里有个list index out of range
         tracked_sequence = create_dynamic_transforms(config, tracked_sequence, flow, point_imgs, raw_imgs, calibration_params)
         toc = time.time()
         print('  time elapsed', toc - tic)
@@ -109,31 +108,31 @@ if __name__ == '__main__':
     print('time_merge', time_merge)
     print('time_exp', time_exp)
 
-    # # evaluate
-    # if not 'test' in args.config:
-    #     print('Evaluating results...')
-    #     print('2D tracking:')
-    #     if config.str('mode') == 'MOTS':
-    #         run_mots_eval(config.dir('2D_tracking_result_savedir'), list_sequences, config.dir('mots_gt_folder'), config.str('mots_seqmap_file'))
-    #     else:
-    #         run_mot_eval(config.dir('2D_tracking_result_savedir'), list_sequences, eval_modified=False)
-    #         run_mot_eval(config.dir('2D_tracking_result_savedir'), list_sequences, eval_modified=True)
-    #     print('')
-    #     print('3D tracking:')
-    #     if config.str('mode') == 'MOTS':
-    #         run_mots_eval(config.dir('3D_tracking_result_savedir'), list_sequences, config.dir('mots_gt_folder'), config.str('mots_seqmap_file'))
-    #     else:
-    #         run_mot_eval(config.dir('3D_tracking_result_savedir'), list_sequences, eval_modified=False)
-    #         run_mot_eval(config.dir('3D_tracking_result_savedir'), list_sequences, eval_modified=True)
+    # evaluate
+    if not 'test' in args.config:
+        print('Evaluating results...')
+        print('2D tracking:')
+        if config.str('mode') == 'MOTS':
+            run_mots_eval(config.dir('2D_tracking_result_savedir'), list_sequences, config.dir('mots_gt_folder'), config.str('mots_seqmap_file'))
+        else:
+            run_mot_eval(config.dir('2D_tracking_result_savedir'), list_sequences, eval_modified=False)
+            run_mot_eval(config.dir('2D_tracking_result_savedir'), list_sequences, eval_modified=True)
+        print('')
+        print('3D tracking:')
+        if config.str('mode') == 'MOTS':
+            run_mots_eval(config.dir('3D_tracking_result_savedir'), list_sequences, config.dir('mots_gt_folder'), config.str('mots_seqmap_file'))
+        else:
+            run_mot_eval(config.dir('3D_tracking_result_savedir'), list_sequences, eval_modified=False)
+            run_mot_eval(config.dir('3D_tracking_result_savedir'), list_sequences, eval_modified=True)
 
-    # #visualize
-    # if config.str('mode') == 'MOTS':
-    #     print('Visualizing results (3D)...')
-    #     visualize_sequences(list_sequences, config.dir('3D_tracking_result_savedir'), config.dir('data_dir') + 'images/',
-    #                         config.dir('3d_mots_vis_output_folder'), config.str('mots_seqmap_file'), draw_boxes=True,
-    #                         create_video=True)
+    #visualize
+    if config.str('mode') == 'MOTS':
+        print('Visualizing results (3D)...')
+        visualize_sequences(list_sequences, config.dir('3D_tracking_result_savedir'), config.dir('data_dir') + 'images/',
+                            config.dir('3d_mots_vis_output_folder'), config.str('mots_seqmap_file'), draw_boxes=False,
+                            create_video=False)
 
-    #     print('Visualizing results (2D)...')
-    #     visualize_sequences(list_sequences, config.dir('2D_tracking_result_savedir'), config.dir('data_dir') + 'images/',
-    #                         config.dir('2d_mots_vis_output_folder'), config.str('mots_seqmap_file'), draw_boxes=True,
-    #                         create_video=True)
+        print('Visualizing results (2D)...')
+        visualize_sequences(list_sequences, config.dir('2D_tracking_result_savedir'), config.dir('data_dir') + 'images/',
+                            config.dir('2d_mots_vis_output_folder'), config.str('mots_seqmap_file'), draw_boxes=False,
+                            create_video=False)

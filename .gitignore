@@ -129,9 +129,4 @@ dmypy.json
 .pyre/
 
 # image and other files
-.png
-.jpg
-.float3
-.flo
-summaries/
-.ORBvoc.txt
+

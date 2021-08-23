@@ -50,11 +50,13 @@ class VTKPointCloud(VTKEntity3D):
         self.add_points(points, colors)
 
     def add_points(self, points: np.ndarray, colors: np.ndarray): #points, colors Nx3
-        assert len(points.shape) == 2
-        assert len(colors.shape) == 2
-        assert points.shape[0] == colors.shape[0]
-        assert points.shape[1] == 3
-        assert colors.shape[1] == 3
+        print(str(len(points.shape))+"==="+str(len(colors.shape))+"==="+str(points.shape)+"==="+str(colors.shape)+"==="+str(points.shape)+"==="+str(colors.shape))
+        print("================")
+        # assert len(points.shape) == 2
+        # assert len(colors.shape) == 2
+        # assert points.shape[0] == colors.shape[0]
+        # assert points.shape[1] == 3
+        # assert colors.shape[1] == 3
 
         [num_new_points, _] = points.shape
 

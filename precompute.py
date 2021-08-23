@@ -67,25 +67,25 @@ if __name__ == '__main__':
 
         calibration_params = CalibrationParameters(sequence_dir + sequence + '.txt')
 
-        if args.compute_seg:
-            print('computing segmentations..')
-            detections = import_detections(config, sequence)
+        # if args.compute_seg:
+        #     print('computing segmentations..')
+        #     detections = import_detections(config, sequence)
+        #     compute_segmentations(refinement_net, sequence_dir, config.dir('segmentations_savedir') + sequence + '/', detections)
+        #     print('done.')
 
-            compute_segmentations(refinement_net, sequence_dir, config.dir('segmentations_savedir') + sequence + '/', detections)
-            print('done.')
-
-        if args.compute_flow_and_disp:
-            print('computing flow and disp..')
-            compute_flow_and_disp(config.dir('flow_disp_savedir') + sequence + '/', sequence_dir, config.dir('netdef_disp_modeldir'),config.dir('netdef_flow_modeldir'))
-            print('done.')
+        # if args.compute_flow_and_disp:
+        #     print('computing flow and disp..')
+        #     compute_flow_and_disp(config.dir('flow_disp_savedir') + sequence + '/', sequence_dir, config.dir('netdef_disp_modeldir'),
+        #                           config.dir('netdef_flow_modeldir'))
+        #     print('done.')
 
         # if args.compute_poses:
         #     print('computing poses..')
         #     compute_poses_orb(sequence, calibration_params, config.dir('orb_pose_savedir') + sequence + '/', sequence_dir, config.dir('orbslam_modeldir'),
-        #                       config.dir('orbslam_vocab_dir'))
+        #                       config.str('orbslam_vocab_dir'))
         #     print('done.')
 
-        # if args.compute_point_imgs:
-        #     print('computing point images..')
-        #     compute_point_imgs(config, sequence, calibration_params)
-        #     print('done.')
+        if args.compute_point_imgs:
+            print('computing point images..')
+            compute_point_imgs(config, sequence, calibration_params)
+            print('done.')

@@ -139,7 +139,6 @@ def track_consistency(config, tracks, reference_track, track_proposals, start_st
     fill_bbox_params = None
     thresh = config.float('merge_treshold')
 
-    print("====point_ref"+str(len(track_proposals)))
     for proposal in track_proposals:
         #print('proposal', proposal)
         predict_points_proposal, avg_transform_proposal, trust_regions_proposal = get_params(config, tracks, point_img_list, proposal, current_step, steps_to_extrapolate, forward=False)
@@ -151,7 +150,6 @@ def track_consistency(config, tracks, reference_track, track_proposals, start_st
 
         if len(predict_points_ref) > len(predict_points_proposal):
             predict_points_ref.reverse()
-        
 
         if not reference_track == proposal:
             for point_ref, point_proposal in zip(predict_points_ref, predict_points_proposal):
