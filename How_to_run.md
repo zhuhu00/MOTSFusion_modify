@@ -1,5 +1,8 @@
 # 运行前的准备
 ps: 本仓库对运行所需要的东西做了一定的修改.更好的能够运行.
+
+需要注意的是,在与其他网络联合的时候,会出现格式问题,这部分推荐使用motsfusion给出的float3或者flo格式,因为光流的数据只有2维,第三维全部是0
+
 # Reqirements
 ### The code environments is running on:
 - CUDA 9, cuDNN 7
@@ -61,4 +64,11 @@ data
 
 
 # `main.py`文件
-运行生成
+运行生成可视化等数据
+
+# Todo
+
+1. **使用其他的算法输出的光流代替**
+   - [x] multi-mono-sf+motsfusion
+   - [ ] mono-mono-sf+motsfusion
+   - [ ] 
